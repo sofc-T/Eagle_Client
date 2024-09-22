@@ -29,8 +29,9 @@ const shadeMapping = {
 };
 
 const generateThemesObject = (colors: any, mapping: any , invert = false) => {
-  const theme: any = {}
+  const theme: any = {};
   baseColors.forEach((color) => {
+    theme[color] = {};
     Object.entries(mapping).forEach(([key, value] :any) => {
         const shade  = invert ? value : key;
         theme[color][key] = colors[color][shade];
@@ -45,7 +46,7 @@ const darkTheme  = generateThemesObject(colors, shadeMapping, true)
 const themes = {
   light : {
   ...lightTheme,
-  white:"#fffffff"},
+  white:"#ffffffff"},
   dark :{
     ...darkTheme,
     white: colors.gray["950"],
